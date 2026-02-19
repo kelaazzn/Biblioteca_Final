@@ -4,11 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ 'Biblioteca' }}</title>
+        <title> Biblioteca </title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+        <!-- Font Awesome para iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -19,7 +22,65 @@
                 html { scroll-behavior: smooth; }
             </style>
         @endif
+
+        <style>
+            /* Animaciones personalizadas */
+            @keyframes fadeIn{
+                from{ opacity: 0; transform: translateY(20px) }
+                to { opacity: 1; transform: translateY(0) }
+            }
+
+            .animate-fade-in {
+                animation: fadeIn 0.8s ease-out forwards;
+            }
+
+            .delay-1 { animation-delay: 0.2s; opacity: 0; }
+            .delay-2 { animation-delay: 0.4s; opacity: 0; }
+            .delay-3 { animation-delay: 0.6s; opacity: 0; }
+
+            /* Estilos para el menu hamburguesa */
+            .hamburger-line {
+                transition: all 0.3s ease-in-out;
+            }
+
+            .hamburger .open .hamburger-line:nth-child(1){
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger .open .hamburger-line:nth-child(2){
+                opacity:0;
+            }
+
+            .hamburger .open .hamburger-line:nth-child(3){
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            /* Transicion suave para el menu movil */
+            .mobile-menu {
+                transition: all 0.3s ease-in-out;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: visible;
+            }
+
+            .mobile-menu.open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            /* Efecto hover para las tarjetas */
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+        </style>
     </head>
+
     <body class="bg-gray-50 text-gray-800 font-sans">
 
         <header class="bg-white shadow-md fixed w-full z-50">
@@ -29,8 +90,13 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="hover:text-blue-600 transition duration-300 font-medium">Inicio</a>
-                    <a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">Login</a>
+                    <a href="inicio" class="hover:text-blue-600 transition duration-300 font-medium">Inicio</a>
+                    <a href="catalogo" class="hover:text-blue-600 transition duration-300 font-medium">Catalogo</a>
+                    <a href="servicios" class="hover:text-blue-600 transition duration-300 font-medium">Servicios</a>
+                    <a href="eventos" class="hover:text-blue-600 transition duration-300 font-medium">Eventos</a>
+                    <a href="contacto" class="hover:text-blue-600 transition duration-300 font-medium">Contacto</a>
+
+                    <a href="2" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">Login</a>
                 </div>
 
                 <div class="md:hidden">
