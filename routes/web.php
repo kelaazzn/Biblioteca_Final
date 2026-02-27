@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\LibrosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,5 +23,19 @@ Route::middleware('auth')->group(function (){
     Route::get('/categorias/crear', [CategoriasController::class, 'create'])->name('categorias.create');
     Route::post('/categorias/store', [CategoriasController::class, 'store'])->name('categorias.store');
 
+    Route::get('/categorias/{id}/editar', [CategoriasController::class, 'edit'])->name('categorias.edit');
+    
+    Route::put('/categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
+    
+    Route::delete('/categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
+
+    Route::get('/libros/crear', [LibrosController::class, 'create'])->name('libros.create');
+    Route::post('/libros/store', [LibrosController::class, 'store'])->name('libros.store');
+    Route::patch('/libros/{libro}/estado', [LibrosController::class, 'actualidarEstado'])->name('libros.estado');
+
+    Route::get('/libros', [LibrosController::class, 'index'])->name('libros');
+    Route::get('/libros/{id}/editar', [LibrosController::class, 'edit'])->name('libros.edit');
+    Route::put('/libros/{id}', [LibrosController::class, 'update'])->name('libros.update');
+    Route::delete('/libros/{id}', [LibrosController::class, 'destroy'])->name('libros.destroy');
 
 });

@@ -74,7 +74,7 @@
                 <span class="menu-text font-bold whitespace-nowrap">Categorías</span>
             </a>
 
-            <a href="#" class="flex items-center gap-4 px-3 py-3 rounded-xl transition-all group {{ request()->routeIs('libros.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40' : 'hover:bg-gray-800 hover:text-white text-gray-400' }}">
+            <a href="{{ route('libros') }}" class="flex items-center gap-4 px-3 py-3 rounded-xl transition-all group {{ request()->routeIs('libros') ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40' : 'hover:bg-gray-800 hover:text-white text-gray-400' }}">
                 <i class="fa-solid fa-book text-xl min-w-[32px] text-center group-hover:scale-110 transition"></i>
                 <span class="menu-text font-bold whitespace-nowrap">Libros</span>
             </a>

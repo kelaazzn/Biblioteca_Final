@@ -10,6 +10,12 @@
         <span class="text-blue-600 font-bold">Categorías</span>
     </nav>
 
+    @if(session()->has('success'))
+        <div class="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">✓ {{ session('success') }}</strong>
+        </div>
+    @endif
+
     <div class="mb-8">
         <h1 class="text-3xl font-black text-gray-900 mb-1">Gestión de Categorías</h1>
         <p class="text-gray-500 text-sm">Administra las clasificaciones para organizar los libros de la biblioteca.</p>
@@ -68,12 +74,19 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-center gap-2">
-                                    <button class="p-2 hover:bg-white rounded-lg text-blue-600 shadow-sm transition">
+                                    <a href="{{ route('categorias.edit', $categoria->id) }}" 
+                                    class="p-2 hover:bg-white rounded-lg text-blue-600 shadow-sm transition">
                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="p-2 hover:bg-white rounded-lg text-red-500 shadow-sm transition">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+                                    </a>
+                                    <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" 
+                                                onclick="return confirm('¿Estás seguro de eliminar esta categoría?')"
+                                                class="p-2 hover:bg-white rounded-lg text-red-500 shadow-sm transition">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

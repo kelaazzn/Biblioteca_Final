@@ -90,13 +90,13 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="inicio" class="hover:text-blue-600 transition duration-300 font-medium">Inicio</a>
-                    <a href="catalogo" class="hover:text-blue-600 transition duration-300 font-medium">Catalogo</a>
+                    <a href="{{ route('home') }}" class="hover:text-blue-600 transition duration-300 font-medium">Inicio</a>
+                    <a href="{{ route('categorias') }}" class="hover:text-blue-600 transition duration-300 font-medium">Catalogo</a>
                     <a href="servicios" class="hover:text-blue-600 transition duration-300 font-medium">Servicios</a>
                     <a href="eventos" class="hover:text-blue-600 transition duration-300 font-medium">Eventos</a>
                     <a href="contacto" class="hover:text-blue-600 transition duration-300 font-medium">Contacto</a>
 
-                    <a href="2" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">Login</a>
+                    <a href="{{ route('login') }}" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">Login</a>
                 </div>
 
                 <div class="md:hidden">
@@ -109,8 +109,8 @@
             </nav>
 
             <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 shadow-xl">
-                <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium">Inicio</a>
-                <a href="#" class="block w-full text-center bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Login</a>
+                <a href="{{ route('home') }}" class="block text-gray-700 hover:text-blue-600 font-medium">Inicio</a>
+                <a href="{{ route('login') }}" class="block w-full text-center bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Login</a>
             </div>
         </header>
 
