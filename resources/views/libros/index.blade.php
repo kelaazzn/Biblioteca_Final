@@ -5,8 +5,14 @@
     <nav class="flex items-center gap-2 text-[11px] uppercase tracking-wider text-gray-400 mb-4">
         <a href="{{ route('libros') }}" class="hover:text-blue-600 transition">Inicio</a>
         <i class="fa-solid fa-chevron-right text-[8px]"></i>
-        <span class="text-blue-600 font-bold">Home</span>
+        <span class="text-blue-600 font-bold">Libros</span>
     </nav>
+
+    @if(session()->has('success'))
+        <div class="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">✓ {{ session('success') }}</strong>
+        </div>
+    @endif
 
     <div class="mb-8">
         <h1 class="text-3xl font-black text-gray-900 mb-1">Gestión de Libros</h1>
@@ -16,11 +22,11 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden">
             <p class="text-gray-500 text-sm font-medium">Total de libros</p>
-            <p class="text-2xl font-bold text-gray-800">{{ $libros->count() }}</p> 
+            <p class="text-2xl font-bold text-gray-800">{{ $total }}</p> 
+            <i class="fa-solid fa-book absolute right-4 top-1/2 -translate-y-1/2 text-blue-100 text-4xl"></i>
             <p class="text-green-500 text-xs mt-2 flex items-center gap-1">
                 <i class="fa-solid fa-clock"></i> Actualizado ahora
             </p>
-            <i class="fa-solid fa-book absolute right-4 top-1/2 -translate-y-1/2 text-blue-100 text-4xl"></i>
         </div>
 
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden">

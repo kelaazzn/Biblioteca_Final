@@ -34,8 +34,10 @@ Route::middleware('auth')->group(function (){
     Route::patch('/libros/{libro}/estado', [LibrosController::class, 'actualidarEstado'])->name('libros.estado');
 
     Route::get('/libros', [LibrosController::class, 'index'])->name('libros');
+    
     Route::get('/libros/{id}/editar', [LibrosController::class, 'edit'])->name('libros.edit');
     Route::put('/libros/{id}', [LibrosController::class, 'update'])->name('libros.update');
+
     Route::delete('/libros/{id}', [LibrosController::class, 'destroy'])->name('libros.destroy');
 
 });

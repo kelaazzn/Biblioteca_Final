@@ -26,7 +26,7 @@
         {{-- La ruta debe apuntar a update y pasar el ID del libro --}}
         <form action="{{ route('libros.update', $libro->id) }}" method="POST" class="p-6 space-y-4">
             @csrf
-            @method('PUT') {{-- Importante para que Laravel sepa que es una actualización --}}
+            @method('PUT')
             
             @if ($errors->any())
                 <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">

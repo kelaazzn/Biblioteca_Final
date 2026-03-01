@@ -12,5 +12,5 @@ class Libro extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
-    }
+    } 
 }

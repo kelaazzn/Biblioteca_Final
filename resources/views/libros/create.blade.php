@@ -7,7 +7,7 @@
     <nav class="flex items-center gap-2 text-[11px] uppercase tracking-wider text-gray-400 mb-4">
         <a href="{{ route('libros') }}" class="hover:text-blue-600 transition">Inicio</a>
         <i class="fa-solid fa-chevron-right text-[8px]"></i>
-        <a href="#" class="hover:text-blue-600 transition">Libros</a>
+        <a href="{{ route('libros') }}" class="hover:text-blue-600 transition">Libros</a>
         <i class="fa-solid fa-chevron-right text-[8px]"></i>
         <span class="text-blue-600 font-bold">Nuevo Libro</span>
     </nav>
