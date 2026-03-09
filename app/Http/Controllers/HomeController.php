@@ -10,14 +10,21 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $libros = Libro::paginate(4);
+        $user = auth()->user();
 
-        $total = Libro::count();
-        $disponibles = Libro::where('estatus', 0)->count();
-        $prestados = Libro::where('estatus', 1)->count();
-        $ocupados = Libro::where('estatus', 2)->count();
-        $perdidos = Libro::where('estatus', 3)->count();
+        if ($user->user_type == 'admin'){
 
-        return view('home.index', compact('libros', 'total', 'prestados', 'disponibles', 'ocupados', 'perdidos'));
+            $libros = Libro::paginate(4);
+
+            $total = Libro::count();
+            $disponibles = Libro::where('estatus', 0)->count();
+            $prestados = Libro::where('estatus', 1)->count();
+            $ocupados = Libro::where('estatus', 2)->count();
+            $perdidos = Libro::where('estatus', 3)->count();
+
+            return view('home.index', compact('libros', 'total', 'prestados', 'disponibles', 'ocupados', 'perdidos'));
+        } else{
+            return view('home.index_user');
+        }
     }
 }

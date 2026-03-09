@@ -64,7 +64,7 @@
                 <span class="menu-text font-bold whitespace-nowrap">Inicio</span>
             </a>
 
-            <a href="#" class="flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-800 hover:text-white transition-all group">
+            <a href="{{ route('usuarios.index') }}" class="flex items-center gap-4 px-3 py-3 rounded-xl transition-all group {{ request()->routeIs('usuarios.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40' : 'hover:bg-gray-800 hover:text-white text-gray-400' }}">
                 <i class="fa-solid fa-users text-xl min-w-[32px] text-center group-hover:scale-110 transition"></i>
                 <span class="menu-text font-bold whitespace-nowrap">Usuarios</span>
             </a>

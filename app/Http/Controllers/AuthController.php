@@ -28,6 +28,8 @@ class AuthController extends Controller
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
+            'username' => $validatedData['email'], // Nombre de usuario
+            'user_type' => 'user', // Tipo de usuario
         ]);
 
         # Redirigir o iniciar sesion automaticamente
