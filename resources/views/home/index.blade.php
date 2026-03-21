@@ -112,7 +112,6 @@
                 </div>
             </div>
 
-            {{-- INFO INFERIOR (Lo que estaba a la derecha ahora va aquí abajo) --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm flex justify-between items-center">
                     <div>

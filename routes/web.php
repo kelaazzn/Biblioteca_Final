@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\PrestamosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,6 +55,26 @@ Route::middleware(['auth', 'user_type:admin'])->group(function (){
 
     Route::get('/usuarios/{id}/eliminar', [UsuariosController::class, 'delete_confirm'])->name('usuarios.delete_confirm');
     Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
+
+
+
+    Route::get('/prestamos', [PrestamosController::class, 'index'])->name('prestamos.index');
+
+    Route::get('/prestamos/create', [PrestamosController::class, 'create'])->name('prestamos.create');
+    
+    Route::post('/prestamos/buscar_usuario', [PrestamosController::class, 'buscar_usuario'])->name('prestamos.buscar_usuario');
+    
+    Route::post('/prestamos/select_libro', [PrestamosController::class, 'select_libro'])->name('prestamos.select_libro');
+
+    Route::post('/prestamos/store', [PrestamosController::class, 'store'])->name('prestamos.store');
+
+    
+    Route::get('/prestamos/{id}/entregar', [PrestamosController::class, 'entregar'])->name('prestamos.entregar');
+
+    Route::put('/prestamos/{id}', [PrestamosController::class, 'update'])->name('prestamos.update');
+
+    Route::delete('/prestamos/{id}', [PrestamosController::class, 'destroy'])->name('prestamos.destroy');
+    
 });
 
 Route::middleware(['auth', 'user_type:user'])->group(function (){
