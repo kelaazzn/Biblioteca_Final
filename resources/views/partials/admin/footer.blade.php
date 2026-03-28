@@ -5,9 +5,11 @@
             Panel de Gestión Municipal.
         </div>
         <div class="flex gap-8 text-xs font-medium text-gray-500 mt-4 md:mt-0">
-            <a href="{{ route('home') }}" class="hover:text-blue-600">Dashboard</a>
-            <a href="#" class="hover:text-blue-600">Libros</a>
-            <a href="#" class="hover:text-blue-600">Usuarios</a>
+            <a href="{{ route('home') }}" class="hover:text-blue-600">Home</a>
+            <a href="{{ route('usuarios.index') }}" class="hover:text-blue-600">Usuarios</a>
+            <a href="{{ route('categorias') }}" class="hover:text-blue-600">Categorias</a>
+            <a href="{{ route('libros') }}" class="hover:text-blue-600">Libros</a>
+            <a href="{{ route('prestamos.index') }}" class="hover:text-blue-600">Préstamos</a>
         </div>
     </div>
 </footer>

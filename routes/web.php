@@ -57,7 +57,6 @@ Route::middleware(['auth', 'user_type:admin'])->group(function (){
     Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
 
 
-
     Route::get('/prestamos', [PrestamosController::class, 'index'])->name('prestamos.index');
 
     Route::get('/prestamos/create', [PrestamosController::class, 'create'])->name('prestamos.create');

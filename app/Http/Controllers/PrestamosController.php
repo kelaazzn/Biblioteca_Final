@@ -12,8 +12,30 @@ class PrestamosController extends Controller
     public function index()
     {
         $prestamos = Prestamo::with(['usuario', 'libro'])->latest()->paginate(10);
+        $totalPrestamos = Prestamo::count();        
+        
+        // 1. Atrasados: Cualquier cosa NO entregada que ya venció
+        $prestamosAtrasados = Prestamo::where('estado', '!=', 'entregado')
+            ->where('fecha_entrega', '<', Carbon::now())
+            ->count();
 
-        return view('prestamos.index', compact('prestamos'));
+        // 2. Activos: Solo los que están a tiempo y no se han entregado
+        $prestamosActivos = Prestamo::where('estado', '!=', 'entregado')
+            ->where('fecha_entrega', '>=', Carbon::now())
+            ->count();
+        
+        // 3. Entregas Hoy: Los que vencen hoy y siguen fuera
+        $entregasHoy = Prestamo::where('estado', '!=', 'entregado')
+            ->whereDate('fecha_entrega', Carbon::today())
+            ->count();
+
+        return view('prestamos.index', compact(
+            'prestamos', 
+            'totalPrestamos', 
+            'prestamosActivos', 
+            'prestamosAtrasados', 
+            'entregasHoy'
+        ));
     }
 
     public function create()
@@ -107,5 +129,14 @@ class PrestamosController extends Controller
             \DB::rollBack();
             return redirect()->route('prestamos.index')->with('error', 'Ha ocurrido un error al realizar la entrega');
         }
+    }
+
+    public function destroy($id)
+    {
+        $prestamo = \App\Models\Prestamo::findOrFail($id);
+        $prestamo->delete();
+
+        return redirect()->route('prestamos.index')
+                        ->with('success', 'El registro del préstamo ha sido eliminado correctamente.');
     }
 }

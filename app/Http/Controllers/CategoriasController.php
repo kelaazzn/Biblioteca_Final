@@ -9,8 +9,14 @@ class CategoriasController extends Controller
 {
     public function index()
     {
-        $categorias = Categoria::all();
-        return view('categorias.index', compact('categorias'));
+        $categorias = Categoria::paginate(10);
+
+        $categoriaMasUtilizada = Categoria::withCount('libros')
+        ->get()
+        ->sortByDesc('libros_count')
+        ->first();
+
+        return view('categorias.index', compact('categorias', 'categoriaMasUtilizada'));
     }
 
     public function create()
