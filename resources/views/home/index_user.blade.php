@@ -3,22 +3,76 @@
 @section('title', 'Inicio - Usuario')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Bienvenido {{ auth()->user()->name }}</h2>
-        <p class="text-gray-600">Desde aquí podrás consultar tus préstamos y ver el catálogo disponible.</p>
-        
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-6 bg-blue-50 rounded-xl border border-blue-100">
-                <i class="fa-solid fa-book-reader text-blue-500 text-3xl mb-4"></i>
-                <h3 class="font-bold text-blue-900">Mis Préstamos</h3>
-                <p class="text-sm text-blue-700">Revisa la fecha de entrega de tus libros.</p>
+<div class="p-8">
+    {{-- Encabezado de Bienvenida --}}
+    <div class="mb-8">
+        <h1 class="text-3xl font-black text-gray-900 mb-1">¡Bienvenido, {{ auth()->user()->name }}!</h1>
+        <p class="text-gray-500 text-sm">Desde aquí puedes gestionar tus libros y consultar el acervo bibliográfico disponible.</p>
+    </div>
+
+    {{-- Tarjetas de Resumen Estáticas (Solo Diseño) --}}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {{-- Tarjeta: Mis Préstamos --}}
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4 hover:border-blue-200 transition-colors">
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
+                <i class="fa-solid fa-book-bookmark text-xl"></i>
             </div>
-            
-            <div class="p-6 bg-green-50 rounded-xl border border-green-100">
-                <i class="fa-solid fa-search text-green-500 text-3xl mb-4"></i>
-                <h3 class="font-bold text-green-900">Catálogo</h3>
-                <p class="text-sm text-green-700">Explora los libros que tenemos para ti.</p>
+            <div>
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Estado</p>
+                <p class="text-sm font-bold text-gray-900 leading-none">Mis Préstamos</p>
+            </div>
+        </div>
+
+        {{-- Tarjeta: Calendario --}}
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4 hover:border-amber-200 transition-colors">
+            <div class="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600">
+                <i class="fa-solid fa-calendar-day text-xl"></i>
+            </div>
+            <div>
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Próximas</p>
+                <p class="text-sm font-bold text-gray-900 leading-none">Fechas de Entrega</p>
+            </div>
+        </div>
+
+        {{-- Tarjeta: Catálogo --}}
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4 hover:border-green-200 transition-colors">
+            <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-green-600">
+                <i class="fa-solid fa-magnifying-glass text-xl"></i>
+            </div>
+            <div>
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Explorar</p>
+                <p class="text-sm font-bold text-gray-900 leading-none">Catálogo Completo</p>
             </div>
         </div>
     </div>
+
+    {{-- Secciones de Acceso (Botones que no dan error) --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="#" class="group p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
+            <div class="flex items-center justify-between">
+                <div>
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-100">
+                        <i class="fa-solid fa-list-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-800">Ver mis Préstamos</h3>
+                    <p class="text-gray-500 text-sm mt-1">Revisa el historial y los libros que tienes actualmente.</p>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-300 group-hover:text-blue-600 group-hover:translate-x-2 transition-all"></i>
+            </div>
+        </a>
+
+        <a href="#" class="group p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
+            <div class="flex items-center justify-between">
+                <div>
+                    <div class="w-14 h-14 bg-green-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-100">
+                        <i class="fa-solid fa-search text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-800">Consultar Catálogo</h3>
+                    <p class="text-gray-500 text-sm mt-1">Busca títulos disponibles para tu siguiente solicitud.</p>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-300 group-hover:text-green-600 group-hover:translate-x-2 transition-all"></i>
+            </div>
+        </a>
+    </div>
+</div>
 @endsection
